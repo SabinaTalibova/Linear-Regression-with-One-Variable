@@ -12,18 +12,23 @@ with open('data.csv') as file:
 		b=float(row[1])
 		x.append(a)
 		y.append(b)
-index=[]
 
+
+index=[]
 for elemnt in y:
 	if elemnt<0:
 		index.append(y.index(elemnt))
-
+#keeping indexes of negative y values
 new_x=[]
 new_y=[]
+#create new array with only negative values
 for elemnt in index:
 	new_x.append(x[elemnt])
 	new_y.append(y[elemnt])
+
+
 plt.scatter(x,y,c='g')
+#scatter negative values
 plt.scatter(new_x,new_y,c='r')
 
 
