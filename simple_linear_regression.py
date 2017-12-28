@@ -1,9 +1,11 @@
 
 import csv
 import matplotlib.pyplot as plt
+import tkinter as tk
 
 x=[]
 y=[]
+
 
 with open('data.csv','r') as file:
 	data=csv.reader(file)
@@ -55,26 +57,50 @@ def cost():
 
 def predict():
 	#input some number
-	user_input=input("Enter the number")
-	a=float(user_input)
+	user_in=user_input
+	print(user_in)
+	a=float(user_in)
 	t0=gradient_decent()[0]
 	t1=gradient_decent()[1]
 	y=t0+t1*a
-	print(y)
+	return y
 
 
-t0=gradient_decent()[0]
-t1=gradient_decent()[1]
+def graphLine():
 
-y_plot=[]
+	t0=gradient_decent()[0]
+	t1=gradient_decent()[1]
 
-for i in range(len(x)):
-	y_plot.append(t0+t1*x[i])
+	y_plot=[]
+	for i in range(len(x)):
+		y_plot.append(t0+t1*x[i])
 
-plt.plot(x,y_plot,c='r')	
-plt.scatter(x,y,c='g')
+	plt.plot(x,y_plot,c='r')	
+	plt.scatter(x,y,c='g')
+	plt.show()
+def gui():
+	window=tk.Tk()
+
+	E=tk.Entry(window)
+	E.place(x=10,y=10)
+	
+	def predict():
+	#input some number
+		user_input=E.get()
+		iput=float(user_input)
+		t0=gradient_decent()[0]
+		t1=gradient_decent()[1]
+		y=(t0+t1*iput)
+		L=tk.Label(window,text=y)
+		L.place(x=40,y=70)
+
+	B=tk.Button(window,text='Predict',command=predict)
+	B.place(x=40,y=40,width=70,height=20)
 
 
 
 
-plt.show()
+	window.mainloop()
+
+graphLine()
+gui()
