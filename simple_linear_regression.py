@@ -38,6 +38,18 @@ def gradient_decent():
 
 		t0=tempt0
 		t1=tempt1
-	return (t0,t1)
+		tarr=[t0,t1]
+	return tarr
 	
 
+def cost():
+	sum=0
+	t0=gradient_decent()[0]
+	t1=gradient_decent()[1]
+	for i in range(len(x)):
+		h=t0+t1*x[i]
+		sum=sum+((h-y[i])*(h-y[i]))
+	cost=(1.0/(2*m))*sum
+	return cost
+
+print(cost())	
