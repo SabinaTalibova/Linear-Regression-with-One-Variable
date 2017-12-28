@@ -29,7 +29,7 @@ for elemnt in index:
 
 plt.scatter(x,y,c='g')
 #scatter negative values
-plt.scatter(new_x,new_y,c='r')
+plt.plot(new_x,new_y,c='r')
 
 
 

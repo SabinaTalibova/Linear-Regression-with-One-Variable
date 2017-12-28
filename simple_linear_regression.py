@@ -1,5 +1,6 @@
 
 import csv
+import matplotlib.pyplot as plt
 
 x=[]
 y=[]
@@ -52,4 +53,28 @@ def cost():
 	cost=(1.0/(2*m))*sum
 	return cost
 
-print(cost())	
+def predict():
+	#input some number
+	user_input=input("Enter the number")
+	a=float(user_input)
+	t0=gradient_decent()[0]
+	t1=gradient_decent()[1]
+	y=t0+t1*a
+	print(y)
+
+
+t0=gradient_decent()[0]
+t1=gradient_decent()[1]
+
+y_plot=[]
+
+for i in range(len(x)):
+	y_plot.append(t0+t1*x[i])
+
+plt.plot(x,y_plot,c='r')	
+plt.scatter(x,y,c='g')
+
+
+
+
+plt.show()
